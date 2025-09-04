@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5001;
 // Middleware
 app.use(cors({
   origin: [
-    'wct-fe.vercel.app',
+    'https://wct-fe.vercel.app/',
   ],
   credentials: true
 }));
@@ -18,7 +18,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/wish-pixel-map', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -97,17 +97,4 @@ app.use((req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-});
-
-// Graceful shutdown
-process.on('SIGTERM', () => {
-  mongoose.connection.close(() => {
-    process.exit(0);
-  });
-});
-
-process.on('SIGINT', () => {
-  mongoose.connection.close(() => {
-    process.exit(0);
-  });
 });
