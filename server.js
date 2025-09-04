@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5001;
 // Middleware
 app.use(cors({
   origin: [
-    'https://wct-fe.vercel.app/',
+    'https://wct-fe.vercel.app',
   ],
   credentials: true
 }));
