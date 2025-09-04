@@ -10,9 +10,11 @@ const PORT = process.env.PORT || 5001;
 // Middleware
 app.use(cors({
   origin: [
-    'https://wct-fe.vercel.app',
+    'https://wct-fe.vercel.app'
   ],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
